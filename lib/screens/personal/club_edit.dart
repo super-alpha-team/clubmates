@@ -6,11 +6,9 @@ class ClubDetail extends StatefulWidget {
   ClubDetail({
     Key key,
     @required this.text,
-    this.onPressed,
   }) : super(key: key);
 
   final String text;
-  final VoidCallback onPressed;
 
   @override
   State<ClubDetail> createState() => _ClubDetailState();
@@ -20,6 +18,7 @@ class _ClubDetailState extends State<ClubDetail> {
   String dropdownValue = 'Học Thuật';
   @override
   Widget build(BuildContext context) {
+    String clubname = widget.text;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -79,7 +78,7 @@ class _ClubDetailState extends State<ClubDetail> {
             ),
             Container(
               child: Text(
-                "Design ITUS",
+                clubname,
                 style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,

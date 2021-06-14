@@ -56,7 +56,8 @@ class _PersonalScreenState extends State<PersonalScreen> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => ClubDetail()));
+                                    builder: (context) =>
+                                        ClubDetail(text: "Design ITUS")));
                           },
                         ),
                       ),
@@ -107,7 +108,13 @@ class _PersonalScreenState extends State<PersonalScreen> {
                           color: ColorStyles.pink,
                           role: "Quan ly",
                         ),
-                        onTap: () {}),
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      ClubDetail(text: "Design ITUS")));
+                        }),
                   );
                 },
                 childCount: 20,
