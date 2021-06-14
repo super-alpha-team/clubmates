@@ -25,7 +25,7 @@ class PersionalDetail extends StatelessWidget {
             // ),
             Container(
               child: CircleAvatar(
-                backgroundColor: Colors.pink,
+                backgroundColor: ColorStyles.lightPurple,
                 radius: 80,
               ),
             ),
@@ -36,21 +36,28 @@ class PersionalDetail extends StatelessWidget {
               height: 30,
             ),
             Container(
+              padding: EdgeInsets.only(right: 60, left: 60),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment
-                    .center, //Center Row contents horizontally,
+                    .spaceBetween, //Center Row contents horizontally,
                 crossAxisAlignment:
                     CrossAxisAlignment.center, //Center Row contents vertically,
+
                 children: [
                   Container(
                     child: Text(
                       "Tên",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black54),
                     ),
                   ),
                   Container(
-                    child: Icon(Icons.edit),
+                    child: IconButton(
+                      icon: const Icon(Icons.edit),
+                      onPressed: () {},
+                    ),
                   ),
                 ],
               ),
@@ -71,33 +78,41 @@ class PersionalDetail extends StatelessWidget {
               height: 30,
             ),
             Container(
-              margin: EdgeInsets.only(top: 5, bottom: 5),
+              // margin: EdgeInsets.only(top: 5, bottom: 5),
+
+              padding: EdgeInsets.only(right: 60, left: 60),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment
-                    .center, //Center Row contents horizontally,
+                    .spaceBetween, //Center Row contents horizontally,
                 crossAxisAlignment:
                     CrossAxisAlignment.center, //Center Row contents vertically,
                 children: [
                   Container(
                     child: Text(
                       "Giới thiệu",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black54),
                     ),
                   ),
                   Container(
-                    child: Icon(Icons.edit),
+                    child: IconButton(
+                      icon: const Icon(Icons.edit),
+                      onPressed: () {},
+                    ),
                   ),
                 ],
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 5, bottom: 5),
+              // margin: EdgeInsets.only(top: 5, bottom: 5),
+              width: 300,
               child: Text(
-                "Tên",
+                "Năng động, tự tin, quyết tâm chiến thắng :)))",
                 style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    fontWeight: FontWeight.normal,
                     color: ColorStyles.darkBlue),
               ),
             ),
@@ -108,29 +123,38 @@ class PersionalDetail extends StatelessWidget {
               height: 30,
             ),
             Container(
-              margin: EdgeInsets.only(top: 5, bottom: 5),
+              // margin: EdgeInsets.only(top: 5, bottom: 5),
+              padding: EdgeInsets.only(right: 60, left: 60),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment
-                    .center, //Center Row contents horizontally,
+                    .spaceBetween, //Center Row contents horizontally,
                 crossAxisAlignment:
                     CrossAxisAlignment.center, //Center Row contents vertically,
                 children: [
                   Container(
                       child: Text(
                     "Email",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black54),
                   )),
-                  Container(child: Icon(Icons.edit)),
+                  Container(
+                    child: IconButton(
+                      icon: const Icon(Icons.edit),
+                      onPressed: () {},
+                    ),
+                  ),
                 ],
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 5, bottom: 5),
+              // margin: EdgeInsets.only(top: 5, bottom: 5),
               child: Text(
-                "Tên",
+                "jasmine@grey.jg",
                 style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    fontWeight: FontWeight.normal,
                     color: ColorStyles.darkBlue),
               ),
             ),
@@ -142,18 +166,27 @@ class PersionalDetail extends StatelessWidget {
             ),
             Container(
               margin: EdgeInsets.only(top: 5, bottom: 5),
+              padding: EdgeInsets.only(right: 60, left: 60),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment
-                    .center, //Center Row contents horizontally,
+                    .spaceBetween, //Center Row contents horizontally,
                 crossAxisAlignment:
                     CrossAxisAlignment.center, //Center Row contents vertically,
                 children: [
                   Container(
                       child: Text(
                     "Số điện thoại",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black54),
                   )),
-                  Container(child: Icon(Icons.edit)),
+                  Container(
+                    child: IconButton(
+                      icon: const Icon(Icons.edit),
+                      onPressed: () {},
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -162,23 +195,29 @@ class PersionalDetail extends StatelessWidget {
               child: Text(
                 "012345678",
                 style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    fontWeight: FontWeight.normal,
                     color: ColorStyles.darkBlue),
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 5, bottom: 5),
+              // margin: EdgeInsets.only(top: 5, bottom: 5),
+              height: 100,
+              alignment: FractionalOffset.bottomCenter,
               child: TextButton(
                 style: ButtonStyle(
                   fixedSize: MaterialStateProperty.all(Size(250, 40)),
                   foregroundColor:
                       MaterialStateProperty.all<Color>(Colors.blue),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  return Navigator.pop(context);
+                },
                 child: Text('Cập nhật',
-                    style:
-                        TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: ColorStyles.darkBlue)),
               ),
             ),
           ],
