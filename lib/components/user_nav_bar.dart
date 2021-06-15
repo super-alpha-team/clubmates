@@ -16,7 +16,7 @@ class UserNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: 10),
+      margin: EdgeInsets.only(right: 10, top: 9),
       height: 60,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -28,10 +28,9 @@ class UserNavBar extends StatelessWidget {
               Text(
                 name,
                 style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: ColorStyles.black
-                ),
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: ColorStyles.black),
               ),
               Text(
                 role,
