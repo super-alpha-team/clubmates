@@ -1,7 +1,9 @@
 import 'package:clubmate/color_styles.dart';
+import 'package:clubmate/screens/home/home_screen.dart';
 import 'package:clubmate/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:clubmate/screens/club/create_club_screen.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -30,7 +32,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: CreateClubScreen(),
+      home: MainScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
