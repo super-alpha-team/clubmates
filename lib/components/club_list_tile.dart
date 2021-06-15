@@ -7,7 +7,7 @@ class ClubListTile extends StatelessWidget {
     @required this.imageURL,
     @required this.description,
     @required this.name,
-    @required this.type,
+    this.type = '',
     this.role = '',
     this.pinned = false,
     this.color = ColorStyles.orange,
@@ -31,6 +31,13 @@ class ClubListTile extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
             color: color,
+            boxShadow: [
+              BoxShadow(
+                color: ColorStyles.black.withAlpha(100),
+                blurRadius: 4,
+                offset: Offset(2.5, 5), // changes position of shadow
+              ),
+            ],
           ),
           child: Row(
             children: [
@@ -82,17 +89,19 @@ class ClubListTile extends StatelessWidget {
                           ),
                         ),
                       ),
-                      role == '' ? Container() : Container(
-                        margin: EdgeInsets.only(top: 5),
-                        child: Text(
-                          role,
-                          style: TextStyle(
-                            color: ColorStyles.black,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ),
+                      role == ''
+                          ? Container()
+                          : Container(
+                              margin: EdgeInsets.only(top: 5),
+                              child: Text(
+                                role,
+                                style: TextStyle(
+                                  color: ColorStyles.black,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ),
                     ],
                   ),
                 ),
