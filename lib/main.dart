@@ -3,6 +3,10 @@ import 'package:clubmate/screens/home/home_screen.dart';
 import 'package:clubmate/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:clubmate/screens/club/create_club_screen.dart';
+import 'package:clubmate/screens/club/create_club_form.dart';
+import 'package:clubmate/screens/club/add_member_form.dart';
+import 'package:clubmate/screens/club/add_activity_form.dart';
+
 
 
 void main() {
@@ -32,7 +36,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: MainScreen(),
+      home: AddActivityForm(),
       debugShowCheckedModeBanner: false,
     );
   }
