@@ -19,7 +19,7 @@ class TaskListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 100,
-      margin: EdgeInsets.fromLTRB(15, 15, 15, 0),
+      margin: EdgeInsets.fromLTRB(15, 25, 15, 0),
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(15),
