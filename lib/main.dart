@@ -28,6 +28,10 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        )
       ),
       home: MainScreen(),
       debugShowCheckedModeBanner: false,
