@@ -1,7 +1,11 @@
 import 'package:clubmate/color_styles.dart';
+import 'package:clubmate/screens/club/activity_group_slash_screen.dart';
+import 'package:clubmate/screens/club/activity_slash_screen.dart';
 import 'package:clubmate/screens/club/club_group_management_screen.dart';
 import 'package:clubmate/screens/club/club_member_screen.dart';
 import 'package:clubmate/screens/club/club_report_screen.dart';
+import 'package:clubmate/screens/club/create_club_form.dart';
+import 'package:clubmate/screens/club/create_club_screen.dart';
 import 'package:clubmate/screens/club/group_member_screen.dart';
 import 'package:clubmate/screens/club/group_slash_screen.dart';
 import 'package:flutter/material.dart';
@@ -68,6 +72,10 @@ class _ClubScreenState extends State<ClubScreen> {
         '/group/home': (context) => GroupSlashScreen(),
         '/group/activity': (context) => GroupSlashScreen(),
         '/group/member': (context) => GroupMemberManamentScreen(),
+        '/activity': (context) => ActivitySlashScreen(),
+        '/activity/home': (context) => ActivityGroupSlashScreen(),
+        '/club/create': (context) => CreateClubScreen(),
+        '/club/create/new': (context) => CreateClubForm(),
       },
       // home: ClubManamentScreen(),
       debugShowCheckedModeBanner: false,

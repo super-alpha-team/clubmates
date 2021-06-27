@@ -1,9 +1,10 @@
 import 'package:clubmate/components/group_activity_list_tile.dart';
+import 'package:clubmate/components/target_list_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:clubmate/components/user_nav_bar.dart';
 import 'package:clubmate/components/button_navigate_button.dart';
 
-class GroupSlashScreen extends StatelessWidget {
+class ActivityGroupSlashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,14 +53,14 @@ class GroupSlashScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              Expanded(child: GroupSlashAction()),
+              Expanded(child: ActivityGroupSlashAction()),
             ],
           ),
         ));
   }
 }
 
-class GroupSlashAction extends StatelessWidget {
+class ActivityGroupSlashAction extends StatelessWidget {
   final List<String> entries = <String>['A', 'B', 'C'];
   Widget build(BuildContext context) {
     final PageController controller = PageController(initialPage: 0);
@@ -89,21 +90,18 @@ class GroupSlashAction extends StatelessWidget {
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
                       child: InkWell(
-                        child: GroupActivityListTile(
+                        child: TargetListTile(
                           // percentComplete: 10,
                           // numTasks: 20,
-                          numTargets: 20,
+                          numTasks: 20,
                           numMembers: 50,
-                          imageURL:
-                              "https://homepages.cae.wisc.edu/~ece533/images/airplane.png",
-                          description:
-                              "Mô tả cho câu lạc bộ này là như thế này đó",
+                          percentComplete: 50,
                           name: "Tên hoạt động",
                           // clubImageURL:
                           //     'https://homepages.cae.wisc.edu/~ece533/images/airplane.png',
                         ),
-                        onTap: () =>
-                            {Navigator.pushNamed(context, "/activity")},
+                        // onTap: () =>
+                        //     {Navigator.pushNamed(context, "/activity")},
                       ),
                     );
                   }),
