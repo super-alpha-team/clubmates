@@ -195,7 +195,7 @@ class _ClubDetailState extends State<ClubDetail> {
               alignment: FractionalOffset.bottomCenter,
               child: TextButton(
                 style: ButtonStyle(
-                  fixedSize: MaterialStateProperty.all(Size(250, 40)),
+                  // fixedSize: MaterialStateProperty.all(Size(250, 40)),
                   foregroundColor:
                       MaterialStateProperty.all<Color>(Colors.blue),
                 ),
