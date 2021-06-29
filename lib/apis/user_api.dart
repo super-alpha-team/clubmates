@@ -9,7 +9,7 @@ class UserAPI {
 
   Future<Map<String, dynamic>> signIn(user) async {
     final response = await API.signIn(user);
-    if (response.statusCode == 201) {
+    if (API.successfulResponses(response.statusCode)) {
       try {
         final data = json.decode(response.body);
         token = data['data']['token'];

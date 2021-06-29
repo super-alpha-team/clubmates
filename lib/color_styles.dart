@@ -1,7 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
-class ColorStyles{
-
+class ColorStyles {
   ColorStyles._();
 
   static const lightOrange = Color(0xFFFEBD84);
@@ -18,4 +19,20 @@ class ColorStyles{
   static const darkOrange = Color(0xFFFF6314);
   static const red = Color(0xFFBD0319);
   static const gray = Color(0xFF5A5252);
+
+  static Color fromCategory(String cate) {
+    // enum: ['Học thuật','Tình nguyện', 'Phong trào', 'Văn nghệ'],
+    switch (cate) {
+      case 'Học thuật':
+        return darkPurple;
+      case 'Tình nguyện':
+        return blue;
+      case 'Phong trào':
+        return orange;
+      case 'Văn nghệ':
+        return pink;
+      default:
+        return orange;
+    }
+  }
 }

@@ -45,4 +45,8 @@ class API {
       body: body,
     );
   }
+
+  static bool successfulResponses(int statusCode) {
+    return statusCode >= 200 && statusCode < 300;
+  }
 }
