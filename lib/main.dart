@@ -3,13 +3,22 @@ import 'package:clubmate/screens/activity/activity_screen.dart';
 import 'package:clubmate/screens/home/home_screen.dart';
 import 'package:clubmate/screens/login/user_login.dart';
 import 'package:clubmate/screens/main_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:clubmate/screens/club/create_club_screen.dart';
 import 'package:clubmate/screens/club/create_club_form.dart';
 import 'package:clubmate/screens/club/add_member_form.dart';
 import 'package:clubmate/screens/club/add_activity_form.dart';
 
-void main() {
+// void main() {
+//   runApp(MyApp());
+// }
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  await FirebaseAuth.instance.useEmulator('http://localhost:9099');
   runApp(MyApp());
 }
 
@@ -40,7 +49,9 @@ class MyApp extends StatelessWidget {
             elevation: 0,
           )),
       // home: MainScreen(),
-      home: LoginScreen(),
+      home: Scaffold(
+        body: AuthTypeSelector(),
+      ),
       // home: ActivityScreen(),
       debugShowCheckedModeBanner: false,
     );
