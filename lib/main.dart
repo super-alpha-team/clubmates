@@ -1,15 +1,8 @@
 import 'package:clubmate/color_styles.dart';
-import 'package:clubmate/screens/activity/activity_screen.dart';
-import 'package:clubmate/screens/home/home_screen.dart';
 import 'package:clubmate/screens/login/user_login.dart';
-import 'package:clubmate/screens/main_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:clubmate/screens/club/create_club_screen.dart';
-import 'package:clubmate/screens/club/create_club_form.dart';
-import 'package:clubmate/screens/club/add_member_form.dart';
-import 'package:clubmate/screens/club/add_activity_form.dart';
 
 // void main() {
 //   runApp(MyApp());
@@ -50,7 +43,7 @@ class MyApp extends StatelessWidget {
           )),
       // home: MainScreen(),
       home: Scaffold(
-        body: AuthTypeSelector(),
+        body: SignInScreen(),
       ),
       // home: ActivityScreen(),
       debugShowCheckedModeBanner: false,
