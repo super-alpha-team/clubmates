@@ -27,6 +27,7 @@ class Club {
     memberQuantity = json['memberQuantity'];
     groupQuantity = json['groupQuantity'];
     activityQuantity = json['activityQuantity'];
+    print('CreateAt ${json['createAt']} ${json['id']}');
     createAt = DateTime.parse(json['createAt'].toString());
     id = json['id'];
     name = json['name'];
