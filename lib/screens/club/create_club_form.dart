@@ -124,7 +124,7 @@ class CreateClubForm extends StatelessWidget {
               color: ColorStyles.darkBlue,
               size: 30,
             ),
-            onPressed: () => print('back'),
+            onPressed: () => {Navigator.pop(context)},
           ),
           backgroundColor: Colors.transparent,
           elevation: 0.0,
@@ -166,11 +166,10 @@ class CreateClubForm extends StatelessWidget {
                             return;
                           }
                           _formKey.currentState.save();
-                          print(_name);
-                          print(_description);
-                          print(_type);
+                          // print(_name);
+                          // print(_description);
+                          // print(_type);
                         },
-                        
                         style: ButtonStyle(
                           shape:
                               MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -190,7 +189,6 @@ class CreateClubForm extends StatelessWidget {
                             color: ColorStyles.white,
                           ),
                         ),
-                        
                       ),
                     )
                   ],

@@ -59,7 +59,9 @@ class _ClubManagementScreenState extends State<ClubManagementScreen> {
             ),
             Expanded(
               child: isLoading
-                  ? Center(child: CircularProgressIndicator(),)
+                  ? Center(
+                      child: CircularProgressIndicator(),
+                    )
                   : ListView.builder(
                       itemCount: clubs.length,
                       itemBuilder: (context, index) => ClubListTile(

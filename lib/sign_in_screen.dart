@@ -26,21 +26,21 @@ class _SignInScreenState extends State<SignInScreen> {
     checkSignIn();
   }
 
-  void checkSignIn() async{
-      SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-      bool loggedIn = sharedPreferences.getBool('loggedIn') ?? false;
-      if (loggedIn) {
-        final userId = sharedPreferences.getString('user.userId');
-        final user = {'userId': userId};
-        final signInResult = await UserAPI.instance.signIn(user);
-        if ('success' == signInResult['status']) {
-          navigateToHome();
-        }
-      } else {
-        setState(() {
-          isLoading = false;
-        });
+  void checkSignIn() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    bool loggedIn = sharedPreferences.getBool('loggedIn') ?? false;
+    if (loggedIn) {
+      final userId = sharedPreferences.getString('user.userId');
+      final user = {'userId': userId};
+      final signInResult = await UserAPI.instance.signIn(user);
+      if ('success' == signInResult['status']) {
+        navigateToHome();
       }
+    } else {
+      setState(() {
+        isLoading = false;
+      });
+    }
   }
 
   @override
