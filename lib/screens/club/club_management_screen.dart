@@ -1,5 +1,4 @@
 import 'package:clubmate/apis/club_api.dart';
-import 'package:clubmate/screens/models/club_model.dart';
 import 'package:flutter/material.dart';
 import 'package:clubmate/components/user_nav_bar.dart';
 import 'package:clubmate/components/club_list_tile.dart';
@@ -23,6 +22,7 @@ class _ClubManagementScreenState extends State<ClubManagementScreen> {
 
   void getClubs() async {
     clubs = await ClubAPI.instance.me();
+    // print(clubs);
   }
 
   @override
@@ -50,10 +50,11 @@ class _ClubManagementScreenState extends State<ClubManagementScreen> {
                     "Các câu lạc bộ của bạn",
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
-                  Icon(
-                    Icons.add,
-                    size: 28,
-                  ),
+                  IconButton(
+                      icon: Icon(Icons.add),
+                      iconSize: 28,
+                      onPressed: () =>
+                          {Navigator.pushNamed(context, '/club/create')}),
                 ],
               ),
             ),

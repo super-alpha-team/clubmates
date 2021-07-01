@@ -1,6 +1,6 @@
 import 'package:clubmate/components/user_list_tile.dart';
 import 'package:clubmate/screens/club/components/club_header.dart';
-import 'package:clubmate/screens/models/user_model.dart';
+import 'package:clubmate/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:clubmate/components/user_nav_bar.dart';
 

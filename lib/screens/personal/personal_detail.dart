@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:clubmate/apis/user_api.dart';
 import 'package:clubmate/color_styles.dart';
-import 'package:clubmate/screens/models/user_model.dart';
+import 'package:clubmate/models/user_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -64,7 +64,7 @@ class _PersionalDetailState extends State<PersionalDetail> {
                   ),
                 ),
                 Divider(
-                  color: Colors.black,
+                  color: Colors.transparent,
                   indent: 60,
                   endIndent: 60,
                   height: 30,
@@ -117,7 +117,7 @@ class _PersionalDetailState extends State<PersionalDetail> {
                   ),
                 ),
                 Divider(
-                  color: Colors.black,
+                  color: Colors.transparent,
                   indent: 60,
                   endIndent: 60,
                   height: 30,
@@ -236,7 +236,7 @@ class _PersionalDetailState extends State<PersionalDetail> {
                   ),
                 ),
                 Divider(
-                  color: Colors.black,
+                  color: Colors.transparent,
                   indent: 60,
                   endIndent: 60,
                   height: 30,
@@ -297,6 +297,12 @@ class _PersionalDetailState extends State<PersionalDetail> {
                   //       fontWeight: FontWeight.normal,
                   //       color: ColorStyles.darkBlue),
                   // ),
+                ),
+                Divider(
+                  color: Colors.transparent,
+                  indent: 60,
+                  endIndent: 60,
+                  height: 30,
                 ),
                 Container(
                   // margin: EdgeInsets.only(top: 5, bottom: 5),

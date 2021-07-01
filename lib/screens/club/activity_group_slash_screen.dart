@@ -1,7 +1,7 @@
-import 'package:clubmate/components/group_activity_list_tile.dart';
-import 'package:clubmate/components/target_list_tile.dart';
+import 'package:clubmate/models/group_model.dart';
 import 'package:flutter/material.dart';
 import 'package:clubmate/components/user_nav_bar.dart';
+import 'package:clubmate/components/club_list_tile.dart';
 import 'package:clubmate/components/button_navigate_button.dart';
 
 class ActivityGroupSlashScreen extends StatelessWidget {
@@ -28,40 +28,54 @@ class ActivityGroupSlashScreen extends StatelessWidget {
           ],
         ),
         body: Container(
-          margin: EdgeInsets.only(
-            right: 8,
-            left: 8,
-          ),
-          child: Column(
-            children: [
-              Container(
-                margin: EdgeInsets.only(top: 20),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("Ban hậu cần",
-                        style: Theme.of(context).textTheme.headline1),
-                    Text(
-                      "Câu lạc bộ Design ITUS",
-                      style: Theme.of(context).textTheme.subtitle1,
-                    ),
-                    Text(
-                      "Ban hậu cần là nơi các bạn sẽ chạy sấp mặt vì các deadline ngả ngửa đột ngột của các bạn trong câu lạc bộ",
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.subtitle2,
-                    )
-                  ],
+            margin: EdgeInsets.only(
+              right: 8,
+              left: 8,
+            ),
+            child: Column(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(top: 20),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("DESIGN ITUS",
+                          style: Theme.of(context).textTheme.headline1),
+                      Text(
+                        "Câu lạc bộ học thuật",
+                        style: Theme.of(context).textTheme.subtitle1,
+                      ),
+                      Text(
+                        "Câu lạc bộ Design ITUS trực thuộc khoa Công nghệ thông tin trường đại học Khoa học tự nhiên",
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.subtitle2,
+                      )
+                    ],
+                  ),
+                  // child: Text("adsf"),
                 ),
-              ),
-              Expanded(child: ActivityGroupSlashAction()),
-            ],
-          ),
-        ));
+                Expanded(child: _ActivityGroupSlashAction()),
+              ],
+            )));
   }
 }
 
-class ActivityGroupSlashAction extends StatelessWidget {
-  final List<String> entries = <String>['A', 'B', 'C'];
+class _ActivityGroupSlashAction extends StatelessWidget {
+  final List<GroupClass> groups = [
+    GroupClass(
+        name: "DESGIN ITUS - main",
+        type: "Ban chính",
+        description: "Câu lạc bộ Design ITUS",
+        pinned: true,
+        imageURL:
+            "https://via.placeholder.com/300.png/09f/fff?text=DESIGN+ITUS"),
+    GroupClass(
+        name: "Ban video",
+        type: "Ban hoạt động",
+        description: "Xây dựng các video cho clb",
+        imageURL: "https://via.placeholder.com/300.png/054/fff/?text=VIDEO",
+        pinned: false)
+  ];
   Widget build(BuildContext context) {
     final PageController controller = PageController(initialPage: 0);
     return PageView(
@@ -77,7 +91,7 @@ class ActivityGroupSlashAction extends StatelessWidget {
                 child: Row(
                   children: [
                     Text(
-                      "Các hoạt động",
+                      "Các Ban trong câu lạc bộ",
                       style: Theme.of(context).textTheme.headline3,
                     )
                   ],
@@ -86,24 +100,21 @@ class ActivityGroupSlashAction extends StatelessWidget {
               child: ListView.builder(
                   // padding: const EdgeInsets.all(8),
 
-                  itemCount: entries.length,
+                  itemCount: groups.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
-                      child: InkWell(
-                        child: TargetListTile(
-                          // percentComplete: 10,
-                          // numTasks: 20,
-                          numTasks: 20,
-                          numMembers: 50,
-                          percentComplete: 50,
-                          name: "Tên hoạt động",
-                          // clubImageURL:
-                          //     'https://homepages.cae.wisc.edu/~ece533/images/airplane.png',
-                        ),
-                        // onTap: () =>
-                        //     {Navigator.pushNamed(context, "/activity")},
-                      ),
-                    );
+                        margin: EdgeInsets.fromLTRB(8, 0, 8, 15),
+                        child: InkWell(
+                            onTap: () {
+                              Navigator.pushNamed(context, '/group/home');
+                            },
+                            child: ClubListTile(
+                              description: groups[index].description,
+                              name: groups[index].name,
+                              imageURL: groups[index].imageURL,
+                              pinned: groups[index].pinned,
+                              type: groups[index].type,
+                            )));
                   }),
             ),
           ],
@@ -121,56 +132,156 @@ class ActivityGroupSlashAction extends StatelessWidget {
                 ],
               ),
             ),
-            // Expanded(
-            //     child: ListView.builder(
-            //         itemCount: 5,
-            //         itemBuilder: (BuildContext context, int index) {
-            //           return Container(
-            //               child: DetailNavigateButton(
-            //             text: 'Chức năng $index',
-            //             onPressed: () {},
-            //           ));
-            //         }))
             Expanded(
-                child: ListView(
-              children: [
-                Container(
+              // child: ListView.builder(
+              //     itemCount: 5,
+              //     itemBuilder: (BuildContext context, int index) {
+              //       return Container(
+              //           child: DetailNavigateButton(
+              //         text: 'Chức năng $index',
+              //         onPressed: () {},
+              //       ));
+              //     }))
+              child: ListView(
+                children: [
+                  Container(
+                      child: DetailNavigateButton(
+                    text: 'Cập nhật thông tin Câu lạc bộ',
+                    onPressed: () {},
+                  )),
+                  Container(
                     child: DetailNavigateButton(
-                  text: 'Cập nhật thông tin Ban',
-                  onPressed: () {},
-                )),
-                Container(
-                  child: DetailNavigateButton(
-                    text: "Cập nhật thành viên",
-                    onPressed: () {
-                      // Navigate to the second screen using a named route.
-                      Navigator.pushNamed(context, '/group/member');
-                    },
+                      text: "Cập nhật thành viên",
+                      onPressed: () {
+                        // Navigate to the second screen using a named route.
+                        Navigator.pushNamed(context, '/member');
+                      },
+                    ),
                   ),
-                ),
-                Container(
-                  child: DetailNavigateButton(
-                    text: "Cập nhật hoạt động",
-                    onPressed: () {
-                      // Navigate to the second screen using a named route.
-                      Navigator.pushNamed(context, '/group/activity');
-                    },
+                  Container(
+                    child: DetailNavigateButton(
+                      text: "Cập nhật các ban",
+                      onPressed: () {
+                        // Navigate to the second screen using a named route.
+                        Navigator.pushNamed(context, '/group');
+                      },
+                    ),
                   ),
-                ),
-                // Container(
-                //   child: DetailNavigateButton(
-                //     text: "Thống kê báo cáo",
-                //     onPressed: () {
-                //       // Navigate to the second screen using a named route.
-                //       Navigator.pushNamed(context, '/report');
-                //     },
-                //   ),
-                // )
-              ],
-            ))
+                  Container(
+                    child: DetailNavigateButton(
+                      text: "Thống kê báo cáo",
+                      onPressed: () {
+                        // Navigate to the second screen using a named route.
+                        Navigator.pushNamed(context, '/report');
+                      },
+                    ),
+                  )
+                ],
+              ),
+            )
           ],
         )
       ],
     );
   }
 }
+
+// import 'package:clubmate/screens/club/club_group_manament_screen.dart';
+// import 'package:flutter/material.dart';
+
+// class ClubSlashScreen extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     double textSizeNav = 12.0;
+//     return Padding(
+//       padding: const EdgeInsets.only(top: 24.0, left: 16, right: 16, bottom: 8),
+//       child: Column(
+//         children: [
+//           // Dashboard Text / Cup / Settings / Profile Picture
+//           Row(
+//             children: [
+//               Expanded(
+//                 child: Row(
+//                   children: [
+//                     Expanded(
+//                       flex: 4,
+//                       child: Text(
+//                         'Home',
+//                         style: TextStyle(fontSize: 25),
+//                         textAlign: TextAlign.left,
+//                       ),
+//                     ),
+//                     Expanded(
+//                       flex: 1,
+//                       child: IconButton(
+//                         padding: const EdgeInsets.all(0.0),
+//                         icon: Icon(Icons.offline_pin),
+//                         onPressed: () {
+//                           // watch(auth).signOut();
+//                           //Navigator.pushNamed(context, 'landing');
+//                         },
+//                       ),
+//                     ),
+//                     Expanded(
+//                       flex: 1,
+//                       child: IconButton(
+//                         padding: const EdgeInsets.all(0.0),
+//                         icon: Icon(Icons.offline_pin),
+//                         onPressed: () {
+//                           // print(watch(graphics));
+//                           //print(watch(dictionaryProvider));
+//                         },
+//                       ),
+//                     ),
+//                     Expanded(
+//                       flex: 1,
+//                       child: Icon(Icons.favorite),
+//                     ),
+//                   ],
+//                 ),
+//               ),
+//             ],
+//           ),
+
+//           // Greeting Text
+//           Padding(
+//             padding: const EdgeInsets.only(top: 0.0),
+//             child: Align(
+//               child: Text(
+//                 'おはよう！',
+//                 style: TextStyle(fontSize: 24),
+//               ),
+//               alignment: Alignment.centerLeft,
+//             ),
+//           ),
+
+//           // TabBar
+//           TabBar(
+//             indicatorPadding: EdgeInsets.only(top: 0),
+//             labelPadding: EdgeInsets.symmetric(horizontal: 2),
+//             indicatorColor: Color(0xFFEE892C),
+//             labelStyle: TextStyle(fontSize: textSizeNav),
+//             tabs: [
+//               Tab(text: 'Overview'),
+//               Tab(text: 'Decks'),
+//               Tab(text: 'Games'),
+//               Tab(text: 'Statistics'),
+//             ],
+//             // controller: TabController(initialIndex: 0, v),
+//           ),
+
+//           // Tab Bar Items
+//           Expanded(
+//             child: TabBarView(children: [
+//               ClubGroupManamentScreen()
+//               // OverviewTab(user: user),
+//               // DecksTab(),
+//               // games(context),
+//               // StatisticsTab(),
+//             ]),
+//           )
+//         ],
+//       ),
+//     );
+//   }
+// }

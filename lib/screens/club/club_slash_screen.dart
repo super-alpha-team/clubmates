@@ -1,4 +1,4 @@
-import 'package:clubmate/screens/models/group_model.dart';
+import 'package:clubmate/models/group_model.dart';
 import 'package:flutter/material.dart';
 import 'package:clubmate/components/user_nav_bar.dart';
 import 'package:clubmate/components/club_list_tile.dart';

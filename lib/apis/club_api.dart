@@ -74,6 +74,26 @@ class ClubAPI {
     return null;
   }
 
+  Future<dynamic> meRaw() async {
+    final url = API.baseURL + '/club/me';
+    final token = UserAPI.instance.token;
+    final response = await API.get(url, token);
+    if (API.successfulResponses(response.statusCode)) {
+      try {
+        final data = json.decode(response.body);
+        return data;
+      } catch (error) {
+        print('ClubAPI - all - Decode - Error');
+        print(error.toString());
+      }
+    } else {
+      print('ClubAPI - all - Response');
+      print('Status Code: ${response.statusCode}');
+      print('Body: ' + response.body);
+    }
+    return null;
+  }
+
   Future<dynamic> listRequest() async {
     final url = API.baseURL + '/club/me';
     final token = UserAPI.instance.token;
