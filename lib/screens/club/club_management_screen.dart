@@ -47,10 +47,11 @@ class ClubManagementScreen extends StatelessWidget {
                   "Các câu lạc bộ của bạn",
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
-                Icon(
-                  Icons.add,
-                  size: 28,
-                ),
+                IconButton(
+                    icon: Icon(Icons.add),
+                    iconSize: 28,
+                    onPressed: () =>
+                        {Navigator.pushNamed(context, '/club/create')}),
               ],
             ),
           ),

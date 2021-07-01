@@ -21,7 +21,7 @@ class _CreateClubScreenState extends State<CreateClubScreen> {
             color: ColorStyles.darkBlue,
             size: 30,
           ),
-          onPressed: () => print('back'),
+          onPressed: () => {Navigator.pop(context)},
         ),
         backgroundColor: Colors.transparent,
         elevation: 0.0,
@@ -53,7 +53,7 @@ class _CreateClubScreenState extends State<CreateClubScreen> {
                 height: 75,
                 child: OutlinedButton(
                   onPressed: () {
-                    print('create new club');
+                    Navigator.pushNamed(context, '/club/create/new');
                   },
                   style: ButtonStyle(
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
