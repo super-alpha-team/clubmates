@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:clubmate/apis/api.dart';
 import 'package:clubmate/apis/user_api.dart';
 import 'package:clubmate/models/club.dart';
+import 'package:clubmate/models/club_member.dart';
 
 class ClubAPI {
   ClubAPI._privateConstructor();
@@ -50,7 +51,7 @@ class ClubAPI {
     return null;
   }
 
-  Future<dynamic> me() async {
+  Future<List<ClubMember>> me() async {
     final url = API.baseURL + '/club/me';
     final token = UserAPI.instance.token;
     final response = await API.get(url, token);
@@ -59,15 +60,15 @@ class ClubAPI {
         final data = json.decode(response.body);
         if ('success' == data['status']) {
           List apiResult = data['data']['result'];
-          final result = apiResult.map((e) => Club.fromJson(e)).toList();
+          final result = apiResult.map((e) => ClubMember.fromJson(e)).toList();
           return result;
         }
       } catch (error) {
-        print('ClubAPI - all - Decode - Error');
+        print('ClubAPI - me - Decode - Error');
         print(error.toString());
       }
     } else {
-      print('ClubAPI - all - Response');
+      print('ClubAPI - me - Response');
       print('Status Code: ${response.statusCode}');
       print('Body: ' + response.body);
     }

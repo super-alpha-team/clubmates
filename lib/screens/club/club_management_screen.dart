@@ -1,4 +1,5 @@
 import 'package:clubmate/apis/club_api.dart';
+import 'package:clubmate/models/club_member.dart';
 import 'package:flutter/material.dart';
 import 'package:clubmate/components/user_nav_bar.dart';
 import 'package:clubmate/components/club_list_tile.dart';
@@ -11,7 +12,7 @@ class ClubManagementScreen extends StatefulWidget {
 
 class _ClubManagementScreenState extends State<ClubManagementScreen> {
   bool isLoading = true;
-  List<Club> clubs = [];
+  List<ClubMember> clubs = [];
   @override
   void initState() {
     // TODO: implement initState
@@ -22,7 +23,9 @@ class _ClubManagementScreenState extends State<ClubManagementScreen> {
 
   void getClubs() async {
     clubs = await ClubAPI.instance.me();
-    // print(clubs);
+    setState(() {
+      isLoading = false;
+    });
   }
 
   @override
@@ -65,10 +68,13 @@ class _ClubManagementScreenState extends State<ClubManagementScreen> {
                     )
                   : ListView.builder(
                       itemCount: clubs.length,
-                      itemBuilder: (context, index) => ClubListTile(
-                        imageURL: clubs[index].photo,
-                        description: clubs[index].description,
-                        name: clubs[index].name,
+                      itemBuilder: (context, index) => Container(
+                        margin: EdgeInsets.fromLTRB(15, 15, 15, 0),
+                        child: ClubListTile(
+                          imageURL: clubs[index].club.photo,
+                          description: clubs[index].club.description,
+                          name: clubs[index].club.name,
+                        ),
                       ),
                     ),
             ),

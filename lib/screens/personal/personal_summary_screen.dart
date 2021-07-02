@@ -7,8 +7,10 @@ import 'package:clubmate/models/club_with_role.dart';
 import 'package:clubmate/models/user_model.dart';
 import 'package:clubmate/screens/personal/club_edit.dart';
 import 'package:clubmate/screens/personal/personal_detail.dart';
+import 'package:clubmate/sign_in_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:clubmate/color_styles.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class PersonalSummaryScreen extends StatefulWidget {
   PersonalSummaryScreen({
@@ -57,7 +59,7 @@ class _PersonalSummaryScreenState extends State<PersonalSummaryScreen> {
       child: CustomScrollView(
         slivers: [
           SliverAppBar(
-            expandedHeight: 330.0,
+            expandedHeight: 350.0,
             backgroundColor: Colors.transparent,
             flexibleSpace: FlexibleSpaceBar(
               background: Container(
@@ -98,6 +100,12 @@ class _PersonalSummaryScreenState extends State<PersonalSummaryScreen> {
                           //         builder: (context) =>
                           //             ClubDetail(text: "Design ITUS")));
                         },
+                      ),
+                    ),
+                    Container(
+                      child: DetailNavigateButton(
+                        text: "Đăng xuất",
+                        onPressed: signOut,
                       ),
                     ),
                     Container(
@@ -161,5 +169,19 @@ class _PersonalSummaryScreenState extends State<PersonalSummaryScreen> {
         ],
       ),
     );
+  }
+
+  void signOut() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    sharedPreferences.setBool("loggedIn", false);
+    navigateToSignIn();
+  }
+
+  void navigateToSignIn() {
+    final router = MaterialPageRoute(
+      builder: (context) => SignInScreen(),
+    );
+    // Navigator.of(context).pushAndRemoveUntil(router, (route) => true);
+    Navigator.of(context, rootNavigator: true).pushReplacement(router);
   }
 }

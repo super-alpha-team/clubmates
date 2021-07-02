@@ -28,6 +28,8 @@ class _SignInScreenState extends State<SignInScreen> {
 
   void checkSignIn() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    // await sharedPreferences.setBool('loggedIn', true);
+    // await sharedPreferences.setString('user.userId', '12345678');
     bool loggedIn = sharedPreferences.getBool('loggedIn') ?? false;
     if (loggedIn) {
       final userId = sharedPreferences.getString('user.userId');
