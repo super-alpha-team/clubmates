@@ -113,4 +113,24 @@ class ClubAPI {
     }
     return null;
   }
+
+  Future<dynamic> update(id, body) async {
+    final url = API.baseURL + '/club/$id/';
+    final token = UserAPI.instance.token;
+    final response = await API.patch(url, body, token);
+    if (API.successfulResponses(response.statusCode)) {
+      try {
+        final data = json.decode(response.body);
+        return data;
+      } catch (error) {
+        print('ClubAPI - all - Decode - Error');
+        print(error.toString());
+      }
+    } else {
+      print('ClubAPI - all - Response');
+      print('Status Code: ${response.statusCode}');
+      print('Body: ' + response.body);
+    }
+    return null;
+  }
 }
