@@ -1,14 +1,15 @@
 import 'package:clubmate/color_styles.dart';
+import 'package:clubmate/models/club_with_role.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ClubDetail extends StatefulWidget {
   ClubDetail({
     Key key,
-    @required this.text,
+    @required this.club,
   }) : super(key: key);
 
-  final String text;
+  final ClubRole club;
 
   @override
   State<ClubDetail> createState() => _ClubDetailState();
@@ -16,9 +17,10 @@ class ClubDetail extends StatefulWidget {
 
 class _ClubDetailState extends State<ClubDetail> {
   String dropdownValue = 'Học Thuật';
+  ClubRole _club;
   @override
   Widget build(BuildContext context) {
-    String clubname = widget.text;
+    _club = widget.club;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -78,7 +80,7 @@ class _ClubDetailState extends State<ClubDetail> {
             ),
             Container(
               child: Text(
-                clubname,
+                _club.name,
                 style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
