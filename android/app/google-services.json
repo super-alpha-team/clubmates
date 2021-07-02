@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "994686838786",
+    "project_id": "clubmates-e527a",
+    "storage_bucket": "clubmates-e527a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:994686838786:android:cae779a3db9d4427425f1b",
+        "android_client_info": {
+          "package_name": "com.alpha.clubmate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "994686838786-j6k6htb1h08pieos38f3rmd4pmnpdnrj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alpha.clubmate",
+            "certificate_hash": "7058fe740e6f705c8efc674feef6f7cb0d48c52b"
+          }
+        },
+        {
+          "client_id": "994686838786-1mrod8lm6mbcehsv0p6tpmpvcfps16ff.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEqxRmd8kyjlK1-GY6PZpWB6iJnLPeObs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "994686838786-1mrod8lm6mbcehsv0p6tpmpvcfps16ff.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "994686838786-r0oo9okjcnuf34skqn85dh9o22mfu5tn.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "con.x"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

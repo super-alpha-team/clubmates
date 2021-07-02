@@ -1,5 +1,6 @@
 import 'package:clubmate/apis/club_api.dart';
 import 'package:clubmate/color_styles.dart';
+import 'package:clubmate/models/club_member.dart';
 import 'package:clubmate/models/club_with_role.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,24 +11,26 @@ class ClubDetail extends StatefulWidget {
     @required this.club,
   }) : super(key: key);
 
-  final ClubRole club;
+  final ClubMember club;
 
   @override
   State<ClubDetail> createState() => _ClubDetailState();
 }
 
 class _ClubDetailState extends State<ClubDetail> {
-  ClubRole _club;
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  ClubMember _club;
   bool _isEnableName = false;
   bool _isEnableDes = false;
   String clubType;
   Icon editName, editDes;
+  bool isloading = false;
 
   @override
   void initState() {
     super.initState();
     _club = widget.club;
-    clubType = _club.category;
+    clubType = _club.club.category;
   }
 
   @override
@@ -44,18 +47,27 @@ class _ClubDetailState extends State<ClubDetail> {
           IconButton(
             icon: Icon(Icons.check, color: Colors.black),
             onPressed: () async {
+              setState(() {
+                isloading = true;
+                _formKey.currentState.save();
+              });
+
               String jsonData = '{"name":"' +
-                  _club.name +
+                  _club.club.name +
                   // '","description":"' +
                   // _user.description +
                   '","category":"' +
                   clubType +
                   '","description":"' +
-                  _club.description +
+                  _club.club.description +
                   '","photo":"' +
-                  _club.photo +
+                  _club.club.photo +
                   '"}';
-              final result = await ClubAPI.instance.update(_club.id, jsonData);
+              final result =
+                  await ClubAPI.instance.update(_club.club.id, jsonData);
+              setState(() {
+                isloading = false;
+              });
               if (result != null) {
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                     content: Text('Updated',
@@ -77,7 +89,23 @@ class _ClubDetailState extends State<ClubDetail> {
         backgroundColor: Colors.transparent,
         elevation: 0.0,
       ),
-      body: SingleChildScrollView(
+      body: Stack(
+        children: [
+          newMethod(),
+          isloading
+              ? Center(
+                  child: CircularProgressIndicator(),
+                )
+              : Container(),
+        ],
+      ),
+    );
+  }
+
+  SingleChildScrollView newMethod() {
+    return SingleChildScrollView(
+      child: Form(
+        key: _formKey,
         child: Container(
           child: Column(
             children: [
@@ -88,7 +116,7 @@ class _ClubDetailState extends State<ClubDetail> {
               Container(
                 child: CircleAvatar(
                   // backgroundColor: ColorStyles.lightPurple,
-                  backgroundImage: NetworkImage(_club.photo),
+                  backgroundImage: NetworkImage(_club.club.photo),
                   radius: 80,
                 ),
               ),
@@ -146,9 +174,9 @@ class _ClubDetailState extends State<ClubDetail> {
                 width: 250,
                 child: TextFormField(
                   textAlign: TextAlign.center,
-                  initialValue: _club.name,
+                  initialValue: _club.club.name,
                   enabled: _isEnableName,
-                  onSaved: (value) => _club.name = value,
+                  onSaved: (value) => _club.club.name = value,
                   minLines: 1,
                   maxLines: 3,
                   style: TextStyle(
@@ -206,8 +234,8 @@ class _ClubDetailState extends State<ClubDetail> {
                     items: <String>[
                       'Học thuật',
                       'Tình nguyện',
-                      'Chính trị',
-                      'Âm nhạc'
+                      'Phong trào',
+                      'Văn nghệ'
                     ].map<DropdownMenuItem<String>>((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
@@ -270,9 +298,9 @@ class _ClubDetailState extends State<ClubDetail> {
                 // ),
                 child: TextFormField(
                   textAlign: TextAlign.center,
-                  initialValue: _club.description,
+                  initialValue: _club.club.description,
                   enabled: _isEnableDes,
-                  onSaved: (value) => _club.description = value,
+                  onSaved: (value) => _club.club.description = value,
                   minLines: 1,
                   maxLines: 10,
                   style: TextStyle(

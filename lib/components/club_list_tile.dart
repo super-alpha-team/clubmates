@@ -94,7 +94,7 @@ class ClubListTile extends StatelessWidget {
                           : Container(
                               margin: EdgeInsets.only(top: 5),
                               child: Text(
-                                role,
+                                role.toUpperCase(),
                                 style: TextStyle(
                                   color: ColorStyles.black,
                                   fontSize: 18,

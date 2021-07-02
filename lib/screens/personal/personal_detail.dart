@@ -50,6 +50,10 @@ class _PersionalDetailState extends State<PersionalDetail> {
           IconButton(
             icon: Icon(Icons.check, color: Colors.black),
             onPressed: () async {
+              setState(() {
+                _formKey.currentState.save();
+              });
+
               String jsonData = '{"name":"' +
                   _user.name +
                   // '","description":"' +

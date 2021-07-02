@@ -122,6 +122,7 @@ class ClubAPI {
     if (API.successfulResponses(response.statusCode)) {
       try {
         final data = json.decode(response.body);
+        print(data);
         return data;
       } catch (error) {
         print('ClubAPI - all - Decode - Error');
