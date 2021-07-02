@@ -46,6 +46,40 @@ class _PersionalDetailState extends State<PersionalDetail> {
         ),
         backgroundColor: Colors.transparent,
         elevation: 0.0,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.check, color: Colors.black),
+            onPressed: () async {
+              String jsonData = '{"name":"' +
+                  _user.name +
+                  // '","description":"' +
+                  // _user.description +
+                  '","phone":"' +
+                  _user.phone +
+                  '","studentId":"' +
+                  _user.userId +
+                  '","photo":"' +
+                  _user.photo +
+                  '"}';
+              final result = await UserAPI.instance.update(jsonData);
+              if (result != null) {
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text('Updated',
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: ColorStyles.white))));
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text('Update Failed',
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: ColorStyles.white))));
+              }
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Form(
@@ -303,47 +337,6 @@ class _PersionalDetailState extends State<PersionalDetail> {
                   indent: 60,
                   endIndent: 60,
                   height: 30,
-                ),
-                Container(
-                  // margin: EdgeInsets.only(top: 5, bottom: 5),
-
-                  alignment: FractionalOffset.bottomCenter,
-                  child: OutlinedButton(
-                    // style: ButtonStyle(
-                    //   fixedSize: MaterialStateProperty.all(Size(250, 40)),
-                    //   foregroundColor:
-                    //       MaterialStateProperty.all<Color>(Colors.blue),
-                    // ),
-                    onPressed: () async {
-                      _formKey.currentState.save();
-                      String jsonData = '{"name":"' +
-                          _user.name +
-                          // '","description":"' +
-                          // _user.description +
-                          '","phone":"' +
-                          _user.phone +
-                          '","studentId":"' +
-                          _user.userId +
-                          '","photo":"' +
-                          _user.photo +
-                          '"}';
-                      // print(json_data);
-                      final result = await UserAPI.instance.update(jsonData);
-                      if (result != null) {
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text('Updated',
-                                style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    color: ColorStyles.white))));
-                      }
-                    },
-                    child: Text('Cập nhật',
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: ColorStyles.darkBlue)),
-                  ),
                 ),
               ],
             ),
